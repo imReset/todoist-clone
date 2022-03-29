@@ -1,17 +1,12 @@
-/* ==========================================================================
-   LETS BUILD TODOIST
-   ========================================================================== */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900");
 
 // General Settings
 html {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -23,8 +18,6 @@ body {
   color: #202020;
   background-color: #fafafa;
   font-smooth: always;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
@@ -54,26 +47,16 @@ $generic-bg: #db4c3f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 
   @if $va-align != center {
-    -webkit-box-pack: left;
-    -ms-flex-pack: left;
     justify-content: left;
   } @else {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
 
 @mixin no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -167,8 +150,6 @@ header {
 
   nav {
     display: grid;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -285,8 +266,6 @@ header {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
       align-items: center;
     }
 
@@ -416,6 +395,38 @@ header {
         font-weight: bold;
         background-color: white;
       }
+    }
+  }
+}
+
+// Show confirm Delete
+.project-delete-modal {
+  position: static;
+
+  &__inner {
+    @include box-overlay();
+    z-index: 99;
+    width: 100px;
+    padding: 10px;
+    top: 200px;
+    right: 0;
+    background-color: white;
+    margin-left: 0;
+
+    p {
+      margin-top: 5px;
+      margin-bottom: 6px;
+      line-height: normal;
+      font-weight: normal;
+      font-size: 15px;
+    }
+
+    button {
+      @include btn("50px");
+    }
+    span {
+      @include cancel();
+      font-weight: normal;
     }
   }
 }
