@@ -44,8 +44,6 @@ $generic-bg: #db4c3f;
 }
 
 @mixin va($va-align: center) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
 
@@ -94,8 +92,6 @@ $generic-bg: #db4c3f;
 
 @mixin task-item() {
   list-style-type: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   line-height: 18px;
   color: #333;
@@ -214,8 +210,6 @@ header {
               @include transparent-button();
               color: white;
               cursor: pointer;
-              display: -webkit-box;
-              display: -ms-flexbox;
               display: flex;
 
               svg {
@@ -249,8 +243,6 @@ header {
 
   li {
     &:hover .sidebar__project-delete {
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
     }
   }
@@ -263,8 +255,6 @@ header {
       padding-left: 10px;
       padding-right: 15px;
       width: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
       align-items: center;
     }
@@ -327,8 +317,6 @@ header {
   &__middle {
     margin-top: 20px;
     margin-bottom: 20px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     border-bottom: $generic-border;
     padding-left: 10px;
@@ -357,8 +345,7 @@ header {
     li {
       list-style-type: none;
       color: #333;
-      display: -webkit-box;
-      display: -ms-flexbox;
+
       display: flex;
       cursor: pointer;
       line-height: 1.5;
@@ -367,8 +354,6 @@ header {
       padding-right: 0;
 
       div:nth-child(1) {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         padding: 10px 0 10px 10px;
         width: 100%;
@@ -378,8 +363,6 @@ header {
           display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
-          -webkit-box-align: center;
-          -ms-flex-align: center;
           align-items: center;
 
           svg {
@@ -428,5 +411,98 @@ header {
       @include cancel();
       font-weight: normal;
     }
+  }
+}
+
+// Main Content
+.content {
+  display: inline;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  max-width: 922px;
+  margin: auto;
+}
+
+// Tasks
+.tasks {
+  width: 656px;
+  background-color: white;
+  margin-left: 266px;
+  border-right: $generic-border;
+  vertical-align: top;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 80px;
+  padding-bottom: 84px;
+
+  @include mq("900px") {
+    margin-left: 0;
+    width: auto;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 30px 20px 0;
+  }
+  .add-task {
+    margin-top: 20px;
+  }
+  &__list li {
+    display: flex;
+    line-height: 18px;
+    color: #333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    list-style-type: none;
+    border-bottom: 1px solid #f0f0f0;
+
+    .checkbox-holder {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 16px;
+
+      .checkbox {
+        cursor: pointer;
+        border-color: gray;
+        color: #343434;
+        height: 16px;
+        width: 16px;
+        display: block;
+        border: 1px solid gray;
+        border-radius: 16px;
+      }
+    }
+  }
+}
+
+// Add Project
+.add-project {
+  padding-left: 13px;
+  padding-right: 20px;
+  margin-top: 20px;
+
+  &__input {
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: white !important;
+    border-radius: 3px;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &__submit {
+    @include btn("100px");
+  }
+
+  &__cancel {
+    @include cancel();
   }
 }
