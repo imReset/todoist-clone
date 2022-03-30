@@ -2,11 +2,9 @@ import React from "react";
 import { Sidebar } from "./Sidebar";
 import { Tasks } from "../Tasks";
 
-export const Content = () => {
-  return (
-    <section className="content">
-      <Tasks />
-      <Sidebar />
-    </section>
-  );
-};
+export const Content = () => (
+  <section className="content">
+    <Sidebar />
+    <Tasks />
+  </section>
+);
