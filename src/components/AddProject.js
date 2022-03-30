@@ -18,10 +18,10 @@ export const AddProject = ({ shouldShow = false }) => {
       .add({
         projectId,
         name: projectName,
-        userId: "QSBn4gayMzF2n8gjjq",
+        userId: QSBn4gayMzF2n8gjjq,
       })
       .then(() => {
-        setProjects([]);
+        setProjects([...projects]);
         setProjectName("");
         setShow(false);
       });
@@ -51,6 +51,11 @@ export const AddProject = ({ shouldShow = false }) => {
             data-testid="hide-project-overlay"
             className="add-project__cancel"
             onClick={() => setShow(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") setShow(false);
+            }}
+            role="button"
+            tabIndex={0}
           >
             Cancel
           </span>
@@ -62,6 +67,11 @@ export const AddProject = ({ shouldShow = false }) => {
         data-testid="add-project-action"
         className="add-project__text"
         onClick={() => setShow(!show)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") setShow(!show);
+        }}
+        role="button"
+        tabIndex={0}
       >
         Add Project
       </span>
