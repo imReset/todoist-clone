@@ -1,12 +1,17 @@
+/* ==========================================================================
+   LETS BUILD TODOIST
+   ========================================================================== */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900");
 
 // General Settings
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 *,
 *:before,
 *:after {
+  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -18,6 +23,8 @@ body {
   color: #202020;
   background-color: #fafafa;
   font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
@@ -44,17 +51,29 @@ $generic-bg: #db4c3f;
 }
 
 @mixin va($va-align: center) {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   @if $va-align != center {
+    -webkit-box-pack: left;
+    -ms-flex-pack: left;
     justify-content: left;
   } @else {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
 
 @mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -92,6 +111,8 @@ $generic-bg: #db4c3f;
 
 @mixin task-item() {
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   line-height: 18px;
   color: #333;
@@ -146,6 +167,8 @@ header {
 
   nav {
     display: grid;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -210,6 +233,8 @@ header {
               @include transparent-button();
               color: white;
               cursor: pointer;
+              display: -webkit-box;
+              display: -ms-flexbox;
               display: flex;
 
               svg {
@@ -238,31 +263,30 @@ header {
   background-color: #fafafa;
 
   @include mq("900px") {
-    display: flex;
+    display: none;
   }
 
   li {
     &:hover .sidebar__project-delete {
-      display: block;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
     }
   }
 
   &__project {
-    padding: 5px 0;
     cursor: pointer;
-
-    div:nth-child(1) {
-      width: 100%;
-      display: flex;
-      align-items: center;
-    }
 
     div:nth-child(1) {
       padding: 5px 0;
       padding-left: 10px;
       padding-right: 15px;
       width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
     }
 
@@ -324,6 +348,8 @@ header {
   &__middle {
     margin-top: 20px;
     margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     border-bottom: $generic-border;
     padding-left: 10px;
@@ -352,7 +378,8 @@ header {
     li {
       list-style-type: none;
       color: #333;
-
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       cursor: pointer;
       line-height: 1.5;
@@ -361,6 +388,8 @@ header {
       padding-right: 0;
 
       div:nth-child(1) {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         padding: 10px 0 10px 10px;
         width: 100%;
@@ -370,6 +399,8 @@ header {
           display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
           align-items: center;
 
           svg {
@@ -389,23 +420,23 @@ header {
   }
 }
 
-// Show confirm Delete
+/* Show Confirm Delete
+     ============================================ */
 .project-delete-modal {
-  position: static;
+  position: relative;
 
   &__inner {
     @include box-overlay();
     z-index: 99;
-    width: 100px;
+    width: 200px;
     padding: 10px;
-    top: 200px;
+    top: 10px;
     right: 0;
     background-color: white;
-    margin-left: 0;
 
     p {
       margin-top: 5px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       line-height: normal;
       font-weight: normal;
       font-size: 15px;
@@ -421,21 +452,26 @@ header {
   }
 }
 
-// Main Content
+/* Main Content
+     ============================================ */
 .content {
-  display: inline;
+  display: grid;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   grid-template-columns: 1fr auto;
   max-width: 922px;
   margin: auto;
 }
 
-// Tasks
+/* Tasks
+     ============================================ */
 .tasks {
   width: 656px;
   background-color: white;
   margin-left: 266px;
   border-right: $generic-border;
+  min-height: calc(100vh);
   vertical-align: top;
   padding-left: 40px;
   padding-right: 40px;
@@ -446,15 +482,20 @@ header {
     margin-left: 0;
     width: auto;
   }
+
   h2 {
     font-size: 20px;
     font-weight: normal;
     margin: 0 30px 20px 0;
   }
+
   .add-task {
     margin-top: 20px;
   }
+
   &__list li {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     line-height: 18px;
     color: #333;
@@ -466,8 +507,14 @@ header {
 
     .checkbox-holder {
       margin-right: 20px;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
       line-height: 16px;
 
@@ -485,7 +532,8 @@ header {
   }
 }
 
-// Add task
+/* Add Task
+     ============================================ */
 .add-task {
   &__overlay {
     background: rgba(102, 102, 102, 0.5);
@@ -496,10 +544,15 @@ header {
     width: 100%;
     height: 100%;
     z-index: 2000;
+    -webkit-transition: opacity 0.2s ease-in;
     transition: opacity 0.2s ease-in;
     height: calc(100vh);
 
     .add-task__main {
+      @include mq("900px") {
+        width: 90%;
+      }
+
       overflow: visible;
       margin-bottom: 20px;
       margin-top: 55px;
@@ -509,6 +562,7 @@ header {
       left: 50%;
       top: 50%;
       padding: 20px 30px;
+      -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
 
       .header {
@@ -581,14 +635,16 @@ header {
   font-size: 18px;
 }
 
-.add-text__text,
+.add-task__text,
 .add-project__text {
   display: inline-block;
   color: #545454;
   font-size: 14px;
   margin-left: 15px;
 }
-// Task Date
+
+/* Task Date
+     ============================================ */
 .task-date {
   @include box-overlay();
   background-color: #fff;
@@ -597,28 +653,53 @@ header {
 
   &__list li {
     @include task-item();
+    padding: 0;
 
-    span:first-of-type {
-      margin-right: 10px;
+    div:nth-child(1) {
+      padding: 10px;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
 
-      svg {
-        fill: grey;
+      span:first-of-type {
+        margin-right: 10px;
+
+        svg {
+          fill: grey;
+        }
       }
     }
   }
 }
 
-// Project Overlay
-project-overlay {
+/* Project Overlay
+     ============================================ */
+.project-overlay {
   @include box-overlay();
   background-color: white;
 
+  @include mq("900px") {
+    width: 200px;
+    right: 0;
+  }
+
   &__list li {
     @include task-item();
+    padding: 0;
+
+    div:nth-child(1) {
+      width: 100%;
+      padding: 10px;
+    }
   }
 }
 
-// Add Project
+/* Add Project
+     ============================================ */
 .add-project {
   padding-left: 13px;
   padding-right: 20px;

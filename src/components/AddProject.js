@@ -18,7 +18,7 @@ export const AddProject = ({ shouldShow = false }) => {
       .add({
         projectId,
         name: projectName,
-        userId: QSBn4gayMzF2n8gjjq,
+        userId: "QSBn4gayMzF2n8gjjq",
       })
       .then(() => {
         setProjects([...projects]);
